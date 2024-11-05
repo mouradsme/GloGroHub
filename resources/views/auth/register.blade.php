@@ -1,3 +1,5 @@
+@auth
+    @if (Auth::user()->role == 'site_manager')
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -14,6 +16,17 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+
+        <div class="mt-4">
+            <x-input-label for="email" :value="__('Email')" />
+            <select id="role" class="block mt-1 w-full" name="role" :value="old('role')" required >
+                <option value="site_manager">Admin</option>
+                <option value="wholesaler">Wholesaler/Supplier</option>
+                <option value="retailer">Retailer</option>
+            </select>
+            <x-input-error :messages="$errors->get('select')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -50,3 +63,5 @@
         </div>
     </form>
 </x-guest-layout>
+@endif
+@endauth

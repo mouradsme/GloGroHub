@@ -37,4 +37,11 @@ class Dashboard extends Controller
                 return abort(403, 'Unauthorized');
         }
     }
+
+    public function add_user() {
+        $user_role = auth()->user()->role;
+        if ($user_role == 'site_manager') {
+            return view('site_manager.add-user');
+        }
+    }
 }

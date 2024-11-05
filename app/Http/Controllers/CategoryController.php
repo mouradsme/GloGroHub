@@ -1,65 +1,137 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the categories.
      */
     public function index()
     {
-        //
+        // Optionally, include parent and children relationships
+        $categories = Category::with(['parent', 'children'])->get();
+        return response()->json($categories);
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store a newly created category in storage.
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name',
+            'description' => 'nullable|string',
+            'parent_id' => 'nullable|exists:categories,id',
+        ]);
+
+        // Prevent circular reference by ensuring parent_id is not the same as the new category's id
+        // Not necessary during creation as the id is not yet set
+
+        $category = Category::create([
+            'parent_id' => $request->parent_id,
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'description' => $request->description,
+        ]);
+
+        return response()->json([
+            'message' => 'Category created successfully',
+            'category' => $category,
+        ], 201);
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified category along with its products and children.
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        $category = Category::with(['products', 'children'])->find($id);
+
+        if (!$category) {
+            return response()->json(['message' => 'Category not found'], 404);
+        }
+
+        return response()->json($category);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Update the specified category in storage.
      */
-    public function edit(Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        if (!$category) {
+            return response()->json(['message' => 'Category not found'], 404);
+        }
+
+        $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
+            'description' => 'nullable|string',
+            'parent_id' => 'nullable|exists:categories,id|not_in:' . $category->id,
+        ]);
+
+        // Prevent circular reference by ensuring the parent is not a child of the current category
+        if ($request->parent_id) {
+            $parent = Category::find($request->parent_id);
+            if ($this->isCircularReference($category, $parent)) {
+                return response()->json(['message' => 'Invalid parent category (circular reference)'], 400);
+            }
+        }
+
+        $category->update([
+            'parent_id' => $request->parent_id,
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'description' => $request->description,
+        ]);
+
+        return response()->json([
+            'message' => 'Category updated successfully',
+            'category' => $category,
+        ]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Remove the specified category from storage.
      */
-    public function update(Request $request, Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        if (!$category) {
+            return response()->json(['message' => 'Category not found'], 404);
+        }
+
+        // Optionally, handle reassigning or deleting child categories
+        // Here, child categories are deleted due to 'cascade' on the foreign key
+
+        $category->delete();
+
+        return response()->json(['message' => 'Category deleted successfully']);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Check for circular references to prevent a category from being its own ancestor.
+     *
+     * @param  Category  $category
+     * @param  Category|null  $parent
+     * @return bool
      */
-    public function destroy(Category $category)
+    private function isCircularReference(Category $category, $parent)
     {
-        //
+        if (!$parent) {
+            return false;
+        }
+
+        if ($parent->id === $category->id) {
+            return true;
+        }
+
+        return $this->isCircularReference($category, $parent->parent);
     }
 }

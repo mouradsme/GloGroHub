@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('marketplace')" :active="request()->routeIs('marketplace')">
                         {{ __('Marketplace') }}
                     </x-nav-link>
+
+                    @if (Auth::user()->role == 'site_manager')
+                    <x-nav-link :href="route('add_user')" :active="request()->routeIs('add_user')">
+                        {{ __('Add User') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 
