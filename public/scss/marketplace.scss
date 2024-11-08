@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubot+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Hubot Sans", sans-serif;
 }
 
 .sidebar {
     position: fixed;
-    left: 0;
+    left: 0; 
     top: 0;
     height: 100%;
     width: 78px;

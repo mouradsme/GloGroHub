@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Charts\AdminRetailers;
-
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class Dashboard extends Controller
@@ -43,5 +43,26 @@ class Dashboard extends Controller
         if ($user_role == 'site_manager') {
             return view('site_manager.add-user');
         }
+        return abort('403');
+    }
+
+    public function add_category() {
+        $user_role = auth()->user()->role;
+        $categories = Category::all();
+        if ($user_role == 'site_manager') {
+            return view('site_manager.add-category', compact('categories'));
+        }
+        return abort('403');
+
+    }
+
+    public function add_product() {
+        $user_role = auth()->user()->role;
+        $categories = Category::all();
+        if ($user_role == 'wholesaler') {
+            return view('wholesaler.add-product', compact('categories'));
+        }
+        return abort('403');
+
     }
 }

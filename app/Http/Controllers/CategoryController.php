@@ -38,10 +38,11 @@ class CategoryController extends Controller
             'description' => $request->description,
         ]);
 
-        return response()->json([
-            'message' => 'Category created successfully',
-            'category' => $category,
-        ], 201);
+        if ($category->exists) {
+            return view('site_manager.dashboard');
+        }
+
+        return view('site_manager.add-category');
     }
 
     /**

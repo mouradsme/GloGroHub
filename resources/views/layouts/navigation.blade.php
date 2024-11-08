@@ -23,7 +23,19 @@
                     <x-nav-link :href="route('add_user')" :active="request()->routeIs('add_user')">
                         {{ __('Add User') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('add_category')" :active="request()->routeIs('add_category')">
+                        {{ __('Add Category') }}
+                    </x-nav-link>
                     @endif
+                    
+
+                    @if (Auth::user()->role == 'wholesaler')
+                    <x-nav-link :href="route('add_product')" :active="request()->routeIs('add_product')">
+                        {{ __('Add Product') }}
+                    </x-nav-link>
+                    
+                    @endif
+                    
                 </div>
             </div>
 

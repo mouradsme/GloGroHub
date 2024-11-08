@@ -15,37 +15,21 @@
             </div> 
     
             <div class="mt-4">
-                <x-input-label for="role" :value="__('Role')" />
-                <select id="role" class="block mt-1 w-full" name="role" :value="old('role')" required >
-                    <option value="site_manager">Admin</option>
-                    <option value="wholesaler">Wholesaler/Supplier</option>
-                    <option value="retailer">Retailer</option>
+                <x-input-label for="parent_id" :value="__('Parent')" />
+                <select id="parent_id" class="block mt-1 w-full" name="parent_id" :value="old('parent_id')" required >
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>                        
+                    @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('select')" class="mt-2" />
             </div>
-    
-            <!-- Password -->
+            
+            <!-- Description -->
             <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-    
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-    
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-    
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-    
-                <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-    
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
+                <x-input-label for="description" :value="__('Description')" />
+                <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required  />
+                <x-input-error :messages="$errors->get('description')" class="mt-2" />
+            </div> 
     
             <div class="flex items-center justify-end mt-4"> 
     

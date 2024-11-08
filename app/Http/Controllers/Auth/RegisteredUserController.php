@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Supplier;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -44,7 +45,16 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->string('password')),
         ]);
 
-
+        if ($user->exists) {
+            if ($user->role == 'wholesaler') {
+                $id = $user->id;
+                Supplier::create([
+                    'user_id' => $id,
+                    'name' => $user->name,
+                    'contact_email' => $user->email
+                ]);
+            }
+        }
         event(new Registered($user));
 
         Auth::login($user);

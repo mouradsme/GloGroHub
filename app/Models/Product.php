@@ -26,6 +26,8 @@ class Product extends Model
         'unit',
         'sku',
         'status',
+        'image', 
+
     ];
 
     // Relationships

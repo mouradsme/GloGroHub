@@ -16,20 +16,19 @@
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
         <!-- Scripts -->
-        
+        <script src="https://cdn.tailwindcss.com"></script>
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.market-sidebar')
 
-            <!-- Page Heading -->
-            <!-- Page Content -->
-        <section class="home-section">
         @yield('content')
-        </section>
-        </div>
+
+    </div>
 
         <script src="{{ asset('js/marketplace.js') }}"></script>
+
     </body>
 </html>
