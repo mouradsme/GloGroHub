@@ -33,18 +33,18 @@
             </li>
             
             <li>
-                <a href="">
+                <a href="{{ route('orders.index') }}">
                     <i class='bx bx-cart-alt'></i>
                     <span class="links_name">Orders</span>
                 </a>
                 <span class="tooltip">Orders</span>
             </li>
             <li>
-                <a href="">
-                    <i class='bx bx-heart'></i>
-                    <span class="links_name">Saved</span>
+                <a href="{{ route('cart.index') }}">
+                    <i class='bx bx-cart'></i>
+                    <span class="links_name">Cart</span>
                 </a>
-                <span class="tooltip">Saved</span>
+                <span class="tooltip">Cart</span>
             </li>
             <li>
                 <a href="">

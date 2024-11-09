@@ -7,31 +7,57 @@ use App\Http\Controllers\Marketplace;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
+
 
 Route::middleware('auth')->group(function () {
 
+    // Home + Dashboard
+
+    Route::get('/', [Marketplace::class, 'index'])->middleware(['verified'])->name('marketplace');
 
     Route::get('/dashboard', [Dashboard::class, 'index'])->middleware(['verified'])->name('dashboard');
 
+    // Users
     Route::get('/add-user', [Dashboard::class, 'add_user'])->middleware(['verified'])->name('add_user');
 
     Route::post('/add-user', [RegisteredUserController::class, 'store'])->middleware(['verified'])->name('add_user.post');
+
+    // Categories
+
+    Route::get('/category/{id}', [Marketplace::class, 'getCategory'])->name('category');
 
     Route::get('/add-category', [Dashboard::class, 'add_category'])->middleware(['verified'])->name('add_category');
 
     Route::post('/add-category', [CategoryController::class, 'store'])->middleware(['verified'])->name('category.post');
     
+    //Products
+
     Route::get('/add-product', [Dashboard::class, 'add_product'])->middleware(['verified'])->name('add_product');
 
     Route::post('/add-product', [ProductController::class, 'store'])->middleware(['verified'])->name('product.store');
     
+    // Orders
 
-    Route::get('/', [Marketplace::class, 'index'])->middleware(['verified'])->name('marketplace');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+    Route::put('/orders/{id}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+    Route::get('/orders/analytics', [OrderController::class, 'analytics'])->name('orders.analytics');
 
-    Route::get('/category/{id}', [Marketplace::class, 'getCategory'])->name('category');
+    // Cart
+
+    
+    Route::prefix('cart')->name('cart.')->group(function () {
+        Route::get('/', [CartController::class, 'index'])->name('index');
+        Route::post('/add', [CartController::class, 'addToCart'])->name('add');
+        Route::post('/remove/{orderId}', [CartController::class, 'removeFromCart'])->name('remove');
+        Route::post('/complete', [CartController::class, 'completeOrder'])->name('complete');
+    });
 
 
-
+    // Profile 
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
