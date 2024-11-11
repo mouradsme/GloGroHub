@@ -4,24 +4,19 @@
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav-list">
+            <!--
             <li>
                 <i class='bx bx-search'></i>
                 <input type="text" placeholder="Search...">
                 <span class="tooltip">{{ __('Search') }}</span>
             </li>
+        -->
             <li>
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('marketplace') }}">
                     <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">{{ __('Dashboard') }}</span>
+                    <span class="links_name">{{ __('Marketplace') }}</span>
                 </a>
-                <span class="tooltip">{{ __('Dashboard') }}</span>
-            </li>
-            <li>
-                <a href="{{ route('profile.edit') }}">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">{{ __('User') }}</span>
-                </a>
-                <span class="tooltip">{{ __('User') }}</span>
+                <span class="tooltip">{{ __('Marketplace') }}</span>
             </li>
             
             <li>
@@ -46,13 +41,36 @@
                 </a>
                 <span class="tooltip">Cart</span>
             </li>
+            
+
             <li>
-                <a href="">
+                <a href="{{ route('profile.edit') }}">
                     <i class='bx bx-cog'></i>
-                    <span class="links_name">Settings</span>
+                    <span class="links_name">{{ __('User Settings') }}</span>
                 </a>
-                <span class="tooltip">Settings</span>
+                <span class="tooltip">{{ __('User Settings') }}</span>
             </li>
+            @if (Auth::user()->role == 'site_manager')
+            <li>
+                <a href="{{ route('users') }}">
+                    <i class='bx bx-group'></i>
+                    <span class="links_name">{{ __('Users') }}</span>
+                </a>
+                <span class="tooltip">{{ __('Users') }}</span>
+            </li>
+            <li>
+                <a href="{{ route('categories') }}">
+                    <i class='bx bx-cabinet'></i>
+                    <span class="links_name">{{ __('Categories') }}</span>
+                </a>
+                <span class="tooltip">{{ __('Categories') }}</span>
+            </li>
+
+            @endif
+
+
+
+
             <li class="profile">
                 <div class="profile-details">
                     <img src="./images/profile.png" alt="profileImg">

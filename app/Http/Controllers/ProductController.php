@@ -8,7 +8,20 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
-{
+{  /**
+    * Display the specified product.
+    *
+    * @param  int  $id
+    * @return \Illuminate\View\View
+    */
+   public function show($id)
+   {
+       // Find the product by its ID
+       $product = Product::with(['category', 'supplier'])->findOrFail($id);
+
+       // Return the view with the product data
+       return view('marketplace.product', compact('product'));
+   }
     /**
      * Store a newly created product in storage.
      */

@@ -14,7 +14,7 @@ class CategoryController extends Controller
     {
         // Optionally, include parent and children relationships
         $categories = Category::with(['parent', 'children'])->get();
-        return response()->json($categories);
+        return view('categories.index', compact('categories'));
     }
 
     /**

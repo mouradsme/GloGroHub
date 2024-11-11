@@ -9,10 +9,18 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HolidayController;
 
+ 
 
 Route::middleware('auth')->group(function () {
+    // Holidays
+    Route::get('/holidays', [HolidayController::class, 'index'])->name('holidays.index');
 
+    Route::get('/holidays/create', [HolidayController::class, 'create'])->name('holidays.create');
+
+    Route::post('/holidays', [HolidayController::class, 'store'])->name('holidays.store');
+    
     // Home + Dashboard
 
     Route::get('/', [Marketplace::class, 'index'])->middleware(['verified'])->name('marketplace');
@@ -20,11 +28,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [Dashboard::class, 'index'])->middleware(['verified'])->name('dashboard');
 
     // Users
+    Route::get('/users', [Dashboard::class, 'users_index'])->middleware(['verified'])->name('users');
+
     Route::get('/add-user', [Dashboard::class, 'add_user'])->middleware(['verified'])->name('add_user');
 
     Route::post('/add-user', [RegisteredUserController::class, 'store'])->middleware(['verified'])->name('add_user.post');
 
+    Route::delete('/users/{id}', [Dashboard::class, 'users_destroy'])->name('users.destroy');
+
+
     // Categories
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 
     Route::get('/category/{id}', [Marketplace::class, 'getCategory'])->name('category');
 
@@ -38,6 +52,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/add-product', [ProductController::class, 'store'])->middleware(['verified'])->name('product.store');
     
+    Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
     // Orders
 
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');

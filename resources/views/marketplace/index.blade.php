@@ -44,7 +44,7 @@
                description="{{ $Product->description }}" 
                price="{{ $Product->price }}" 
                src="{{ Str::startsWith($Product->image, ['http://', 'https://']) ? $Product->image : asset('storage/' . $Product->image) }}" 
-               min="{{ $Product->stock_quantity }}"
+               min="{{ $Product->min_order_quantity }}"
                id="{{ $Product->id }}"
                />
             

@@ -14,15 +14,7 @@
             <h2 class="text-sm  text-gray-100">{{ __('min: ') }} {{ $min }}</h2>
 
         </div>
-        
-        <form action="{{ route('cart.add') }}" method="POST">
-            @csrf
-            <input type="hidden" name="product_id" value="{{ $id }}">
-            <input type="hidden" name="quantity" value="{{ $min }}" class="hidden"> <!-- Default quantity is 1, you can change this -->
-            
-            <button type="submit" class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
-                Add to cart
-            </button>
-        </form>
+        <a href="{{ route('product.show', array('id' => $id)) }}" class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">See Product</a>
+
             </div>
 </div>

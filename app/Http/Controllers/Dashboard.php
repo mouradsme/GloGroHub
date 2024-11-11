@@ -2,12 +2,32 @@
 
 namespace App\Http\Controllers;
 use App\Charts\AdminRetailers;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class Dashboard extends Controller
 {
     //
+    public function users_index()
+    {
+        $users = User::all(); // Fetch all users
+        return view('users.index', compact('users')); // Pass users to the view
+    }
+
+    public function users_destroy($id)
+    {
+        // Find the user by ID
+        $user = User::findOrFail($id);
+
+        // Delete the user
+        $user->delete();
+
+        // Redirect back with a success message
+        return redirect()->route('users')->with('success', 'User deleted successfully.');
+    }
+
+
     public function admin_dashboard() {
         $chart = new AdminRetailers;
         $chart->labels(['2 days ago', 'Yesterday', 'Today']);
@@ -41,7 +61,7 @@ class Dashboard extends Controller
     public function add_user() {
         $user_role = auth()->user()->role;
         if ($user_role == 'site_manager') {
-            return view('site_manager.add-user');
+            return view('users.create');
         }
         return abort('403');
     }
@@ -50,7 +70,7 @@ class Dashboard extends Controller
         $user_role = auth()->user()->role;
         $categories = Category::all();
         if ($user_role == 'site_manager') {
-            return view('site_manager.add-category', compact('categories'));
+            return view('categories.create', compact('categories'));
         }
         return abort('403');
 
