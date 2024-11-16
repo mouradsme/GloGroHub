@@ -20,11 +20,11 @@
             </li>
             
             <li>
-                <a href="">
+                <a href="{{ route('recommended') }}">
                     <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="links_name">{{ __('Analytics') }}</span>
+                    <span class="links_name">{{ __('Recommended Products') }}</span>
                 </a>
-                <span class="tooltip">{{ __('Analytics') }}</span>
+                <span class="tooltip">{{ __('Recommended Products') }}</span>
             </li>
             
             <li>

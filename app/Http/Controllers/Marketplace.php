@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Supplier;
 use App\Models\Product;
+use Illuminate\Support\Facades\Http;
 
 class Marketplace extends Controller
 {
@@ -54,6 +55,30 @@ class Marketplace extends Controller
             'Products' => $Products,
             'Suppliers' => $Suppliers
         ));
+    }
+
+    public function recommended() {
+        $flaskApiUrl = env('AI_RECOMMENDER_BASE_API_URL') . "/recommend-products-by-holiday-sales";
+
+        $response = Http::get($flaskApiUrl);
+        $recommendedIds = array();
+        if ($response->successful()) 
+            $recommendedIds = $response->json(); 
+        if (is_array($recommendedIds)) {
+            $Products = Product::with(['category', 'supplier'])->whereIn('id', $recommendedIds)->paginate(10);
+        } else {
+            $Products = Product::paginate(10); 
+        } 
+
+
+        $Categories = $this->getSubCategories(1);
+        $Suppliers = Supplier::all();
+        return view('marketplace.recommended', array(
+            'Categories' => $Categories,
+            'Products' => $Products,
+            'Suppliers' => $Suppliers
+        ));
+
     }
 
     public function getCategory($id) {

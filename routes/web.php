@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/', [Marketplace::class, 'index'])->middleware(['verified'])->name('marketplace');
 
+    Route::get('/recommendations', [Marketplace::class, 'recommended'])->middleware(['verified'])->name('recommended');
+
     Route::get('/dashboard', [Dashboard::class, 'index'])->middleware(['verified'])->name('dashboard');
 
     // Users

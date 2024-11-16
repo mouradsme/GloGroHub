@@ -1,27 +1,67 @@
+import mysql.connector
 import pandas as pd
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.metrics.pairwise import cosine_similarity
+
 import numpy as np
+import random 
 
 class ProductRecommender:
-    target_columns = ['product_id', 'category_id',  'supplier_id', 'price', 'ai_demand_score', 'cultural_relevance_score', 'target_column']
+    target_columns = ['product_id', 'category_id', 'supplier_id', 'price', 'ai_demand_score', 'cultural_relevance_score', 'target_column']
 
-    def __init__(self, product_data):
-        # Initialize the product data
-        self.product_data = product_data
+    def __init__(self, db_config):
+        # Initialize the MySQL database connection
+        self.db_config = db_config
+        self.product_data = None  # This will hold the product data
         
         # Initialize models and preprocessors
         self.scaler = StandardScaler()
         self.label_encoder = LabelEncoder()
         self.model = None
         
+        # Set the random seeds for reproducibility
+        self.set_random_seed(42)
+
+    def set_random_seed(self, seed):
+        """
+        Set the random seed for reproducibility across different libraries.
+        """
+        random.seed(seed)
+        np.random.seed(seed)
+        tf.random.set_seed(seed)
+
+    def load_data_from_mysql(self):
+        """
+        Loads product data from MySQL database.
+        """
+        # Connect to the MySQL database
+        connection = mysql.connector.connect(
+            host=self.db_config['host'],
+            user=self.db_config['user'],
+            password=self.db_config['password'],
+            database=self.db_config['database']
+        )
+        
+        # SQL query to fetch the product data
+        query = "SELECT id as product_id, category_id, supplier_id, price, ai_demand_score, cultural_relevance_score, name FROM products"
+        
+        # Fetch data into a pandas DataFrame
+        self.product_data = pd.read_sql(query, connection)
+        
+        # Close the database connection
+        connection.close()
+
     def preprocess_data(self):
         """
         Preprocesses the product data for training.
         - Encodes categorical variables.
         - Scales numerical features.
         """
+        if self.product_data is None:
+            raise ValueError("Product data is not loaded. Please load data first.")
+
         # Encoding categorical variables (e.g., 'category_id', 'supplier_id', etc.)
         self.product_data['category_id'] = self.label_encoder.fit_transform(self.product_data['category_id'])
         self.product_data['supplier_id'] = self.label_encoder.fit_transform(self.product_data['supplier_id'])
@@ -65,68 +105,54 @@ class ProductRecommender:
         y = self.product_data['target_column']  # Use 'target_column' as the target
         
         # Split data into training and testing sets
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)  # Fix shuffle with a random_state
         
         # Train the model
-        self.model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test))
+        self.model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test), verbose=0)
     
+
     def recommend_products(self, product_id, top_n=5):
         """
-        Recommends products based on the trained model.
-        - Predicts scores for each product and returns the top_n most similar products.
+        Recommends products based on cosine similarity of features.
         """
-        if self.model is None:
-            raise ValueError("Model has not been trained yet.")
-        
-        # Features to be used for recommendations
-        columns = ['product_id', 'category_id', 'supplier_id', 'price', 'ai_demand_score', 'cultural_relevance_score']
+        if self.product_data is None:
+            raise ValueError("Product data is not loaded. Please load data first.")
         
         # Get the features for the given product_id
+        columns = ['category_id', 'supplier_id', 'price', 'ai_demand_score', 'cultural_relevance_score']
         product = self.product_data[self.product_data['product_id'] == product_id].iloc[0]
-        product_features = product[columns].values.reshape(1, -1)  # Reshape for prediction
+        product_features = product[columns].values.reshape(1, -1)  # Reshape for similarity calculation
         
-        # Get predictions for all products
+        # Compute cosine similarity between the product and all others
         product_scores = []
         for _, prod in self.product_data.iterrows():
             prod_features = prod[columns].values.reshape(1, -1)  # Features for this product
-            score = self.model.predict(prod_features)  # Predict score for this product
-            product_scores.append((prod['product_id'], score[0][0]))
+            similarity_score = cosine_similarity(product_features, prod_features)[0][0]
+            product_scores.append((prod['product_id'], similarity_score))
         
-        # Sort products by predicted score
+        # Sort products by similarity score (highest first)
         product_scores.sort(key=lambda x: x[1], reverse=True)
         
         # Return top_n products
-        recommended_products = [score[0] for score in product_scores[:top_n]]
+        recommended_products = [score[0] for score in product_scores[1:top_n+1]]  # Exclude the product itself
         return recommended_products
     
     def predict_and_recommend(self, product_id, top_n=5):
         """
         A full cycle: Preprocess, build, train, and recommend products.
         """
+        # Load data from MySQL
+        self.load_data_from_mysql()
+        
         # Preprocess data
         self.preprocess_data()
         
         # Build the model
         self.build_model()
         
-        # Train the model
+        # Train the 
         self.train_model()
         
         # Get product recommendations
         recommendations = self.recommend_products(product_id, top_n)
         return recommendations
-
-# Example usage
-product_data = pd.DataFrame({
-    'product_id': [1, 2, 3, 4, 5],
-    'name': ['Product A', 'Product B', 'Product C', 'Product D', 'Product E'],
-    'category_id': ['A', 'B', 'A', 'C', 'B'],
-    'supplier_id': ['S1', 'S2', 'S1', 'S3', 'S2'],
-    'price': [100, 200, 150, 300, 250],
-    'ai_demand_score': [0.9, 0.8, 0.85, 0.6, 0.95],
-    'cultural_relevance_score': [0.7, 0.8, 0.75, 0.6, 0.9]
-})
-
-recommender = ProductRecommender(product_data)
-recommended_products = recommender.predict_and_recommend(product_id=1, top_n=3)
-print(f"Recommended Products: {recommended_products}")

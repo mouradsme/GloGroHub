@@ -6,6 +6,9 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
+
+
 
 class ProductController extends Controller
 {  /**
@@ -16,11 +19,19 @@ class ProductController extends Controller
     */
    public function show($id)
    {
-       // Find the product by its ID
-       $product = Product::with(['category', 'supplier'])->findOrFail($id);
+        $product = Product::with(['category', 'supplier'])->findOrFail($id);
+        $flaskApiUrl = env('AI_RECOMMENDER_BASE_API_URL') . "/recommend-products/$id";
 
-       // Return the view with the product data
-       return view('marketplace.product', compact('product'));
+        $response = Http::get($flaskApiUrl);
+        $recommendedIds = array();
+        if ($response->successful()) 
+            $recommendedIds = $response->json(); 
+        if (is_array($recommendedIds)) {
+            $similar_products = Product::with(['category', 'supplier'])->whereIn('id', $recommendedIds)->get();
+        } else {
+            $similar_products = collect(); 
+        } 
+       return view('marketplace.product', compact('product', 'similar_products'));
    }
     /**
      * Store a newly created product in storage.
