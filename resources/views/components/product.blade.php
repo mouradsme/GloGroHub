@@ -1,9 +1,9 @@
 @props(['name', 'description', 'price', 'src', 'min', 'id'])
 
-<div class="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+<div class="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-orange-500">
     <div class="px-4 py-2">
-        <h1 class="text-xl font-bold text-gray-800 uppercase dark:text-white">{{ $name }}</h1>
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ $description }}</p>
+        <h1 class="text-xl font-bold text-orange-800 uppercase dark:text-white">{{ $name }}</h1>
+        <p class="mt-1 text-sm text-orange-600 text-white">{{ $description }}</p>
     </div>
 
     <img class="object-cover w-full h-48 mt-2" src="{{ $src }}" alt="{{ $name }}">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -11,7 +12,21 @@ use Illuminate\Support\Facades\Http;
 
 
 class ProductController extends Controller
-{  /**
+{  
+    
+    public function index() {
+
+        $user_id = null;
+        $Products = Product::with(['category', 'supplier']);
+        if ($user_id) 
+            $Products = $Products->where('user_id', $user_id);
+        
+        $Products = $Products->paginate(10);
+        return view('products.index', compact('Products'));
+    }
+
+    
+    /**
     * Display the specified product.
     *
     * @param  int  $id
@@ -32,6 +47,15 @@ class ProductController extends Controller
             $similar_products = collect(); 
         } 
        return view('marketplace.product', compact('product', 'similar_products'));
+   }
+
+   public function create() {
+     $user_role = auth()->user()->role;
+    $categories = Category::all();
+
+    return view('products.create', compact('categories'));
+    
+
    }
     /**
      * Store a newly created product in storage.

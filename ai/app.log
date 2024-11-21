@@ -1,0 +1,151 @@
+2024-11-21 16:10:11,291 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.2.0.4:5000
+2024-11-21 16:10:11,291 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-21 16:10:11,292 - INFO -  * Restarting with stat
+2024-11-21 16:10:13,341 - WARNING -  * Debugger is active!
+2024-11-21 16:10:13,343 - INFO -  * Debugger PIN: 110-108-859
+2024-11-21 16:10:22,491 - INFO - Received request to recommend products for user ID: 38.
+2024-11-21 16:10:22,492 - ERROR - Error in recommend_products for user ID 38: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:10:22,493 - INFO - 105.99.162.140 - - [21/Nov/2024 16:10:22] "[35m[1mGET /recommend-products/38 HTTP/1.1[0m" 500 -
+2024-11-21 16:10:25,293 - INFO - Received request to recommend products for user ID: 1.
+2024-11-21 16:10:25,294 - ERROR - Error in recommend_products for user ID 1: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:10:25,294 - INFO - 105.99.162.140 - - [21/Nov/2024 16:10:25] "[35m[1mGET /recommend-products/1 HTTP/1.1[0m" 500 -
+2024-11-21 16:10:52,778 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:10:52,779 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:10:52,780 - INFO - 105.99.162.140 - - [21/Nov/2024 16:10:52] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:13:32,868 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:13:32,869 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:13:32,869 - INFO - 105.99.162.140 - - [21/Nov/2024 16:13:32] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:13:33,589 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:13:33,590 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:13:33,590 - INFO - 105.99.162.140 - - [21/Nov/2024 16:13:33] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:13:33,780 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:13:33,781 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:13:33,781 - INFO - 105.99.162.140 - - [21/Nov/2024 16:13:33] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:13:33,967 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:13:33,968 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:13:33,969 - INFO - 105.99.162.140 - - [21/Nov/2024 16:13:33] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:13:34,173 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:13:34,174 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:13:34,174 - INFO - 105.99.162.140 - - [21/Nov/2024 16:13:34] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:13:34,364 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:13:34,365 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:13:34,365 - INFO - 105.99.162.140 - - [21/Nov/2024 16:13:34] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:13:41,537 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:13:41,539 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:13:41,539 - INFO - 105.99.162.140 - - [21/Nov/2024 16:13:41] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:27,434 - INFO -  * Detected change in '/var/www/html/glogrohub/ai/api.py', reloading
+2024-11-21 16:15:27,805 - INFO -  * Restarting with stat
+2024-11-21 16:15:29,828 - WARNING -  * Debugger is active!
+2024-11-21 16:15:29,830 - INFO -  * Debugger PIN: 110-108-859
+2024-11-21 16:15:33,286 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.2.0.4:5000
+2024-11-21 16:15:33,286 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-21 16:15:33,287 - INFO -  * Restarting with stat
+2024-11-21 16:15:35,286 - WARNING -  * Debugger is active!
+2024-11-21 16:15:35,287 - INFO -  * Debugger PIN: 110-108-859
+2024-11-21 16:15:38,415 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:38,416 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:38,417 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:38] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:39,191 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:39,192 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:39,193 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:39] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:39,374 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:39,375 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:39,376 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:39] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:39,543 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:39,544 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:39,544 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:39] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:39,714 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:39,715 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:39,715 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:39] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:39,895 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:39,896 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:39,896 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:39] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:40,041 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:40,042 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:40,043 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:40] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:40,194 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:40,195 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:40,195 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:40] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:40,358 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:40,359 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:40,360 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:40] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:40,517 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:40,518 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:40,518 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:40] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:15:40,675 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:15:40,676 - ERROR - Error in recommend_products for user ID 5: module 'ssl' has no attribute 'wrap_socket'
+2024-11-21 16:15:40,676 - INFO - 105.99.162.140 - - [21/Nov/2024 16:15:40] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:16:36,504 - INFO -  * Detected change in '/var/www/html/glogrohub/ai/api.py', reloading
+2024-11-21 16:16:36,882 - INFO -  * Restarting with stat
+2024-11-21 16:16:42,893 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.2.0.4:5000
+2024-11-21 16:16:42,894 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-21 16:16:42,894 - INFO -  * Restarting with stat
+2024-11-21 16:16:44,891 - WARNING -  * Debugger is active!
+2024-11-21 16:16:44,892 - INFO -  * Debugger PIN: 110-108-859
+2024-11-21 16:16:47,391 - INFO - 105.99.162.140 - - [21/Nov/2024 16:16:47] "GET /test HTTP/1.1" 200 -
+2024-11-21 16:18:45,308 - INFO -  * Detected change in '/var/www/html/glogrohub/ai/ProductRecommender.py', reloading
+2024-11-21 16:18:45,711 - INFO -  * Restarting with stat
+2024-11-21 16:18:47,716 - WARNING -  * Debugger is active!
+2024-11-21 16:18:47,718 - INFO -  * Debugger PIN: 110-108-859
+2024-11-21 16:19:32,482 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.2.0.4:5000
+2024-11-21 16:19:32,482 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-21 16:19:32,482 - INFO -  * Restarting with stat
+2024-11-21 16:19:34,481 - WARNING -  * Debugger is active!
+2024-11-21 16:19:34,482 - INFO -  * Debugger PIN: 110-108-859
+2024-11-21 16:19:36,647 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:19:36,648 - ERROR - Error in recommend_products for user ID 5: name 'db_config' is not defined
+2024-11-21 16:19:36,648 - INFO - 105.99.162.140 - - [21/Nov/2024 16:19:36] "[35m[1mGET /recommend-products/5 HTTP/1.1[0m" 500 -
+2024-11-21 16:22:59,019 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.2.0.4:5000
+2024-11-21 16:22:59,019 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-21 16:22:59,019 - INFO -  * Restarting with stat
+2024-11-21 16:23:01,007 - WARNING -  * Debugger is active!
+2024-11-21 16:23:01,009 - INFO -  * Debugger PIN: 110-108-859
+2024-11-21 16:23:01,014 - INFO - Received request to recommend products for user ID: 5.
+2024-11-21 16:23:02,299 - INFO - Recommendations for user 5 generated successfully.
+2024-11-21 16:23:02,300 - INFO - 105.99.162.140 - - [21/Nov/2024 16:23:02] "GET /recommend-products/5 HTTP/1.1" 200 -
+2024-11-21 16:23:15,615 - INFO - Received request to recommend products for user ID: 1.
+2024-11-21 16:23:16,830 - INFO - Recommendations for user 1 generated successfully.
+2024-11-21 16:23:16,830 - INFO - 127.0.0.1 - - [21/Nov/2024 16:23:16] "GET /recommend-products/1 HTTP/1.1" 200 -
+2024-11-21 16:25:24,812 - INFO - Received request to recommend products for user ID: 1.
+2024-11-21 16:25:26,139 - INFO - Recommendations for user 1 generated successfully.
+2024-11-21 16:25:26,139 - INFO - 127.0.0.1 - - [21/Nov/2024 16:25:26] "GET /recommend-products/1 HTTP/1.1" 200 -
+2024-11-21 16:26:26,763 - INFO - Received request to recommend products for user ID: 50.
+2024-11-21 16:26:27,974 - INFO - Recommendations for user 50 generated successfully.
+2024-11-21 16:26:27,974 - INFO - 105.99.162.140 - - [21/Nov/2024 16:26:27] "GET /recommend-products/50 HTTP/1.1" 200 -
+2024-11-21 16:26:41,255 - INFO - Received request to recommend products for user ID: 10.
+2024-11-21 16:26:42,471 - INFO - Recommendations for user 10 generated successfully.
+2024-11-21 16:26:42,472 - INFO - 105.99.162.140 - - [21/Nov/2024 16:26:42] "GET /recommend-products/10 HTTP/1.1" 200 -
+2024-11-21 16:27:13,852 - INFO - Received request to recommend products for user ID: 14.
+2024-11-21 16:27:15,066 - INFO - Recommendations for user 14 generated successfully.
+2024-11-21 16:27:15,067 - INFO - 127.0.0.1 - - [21/Nov/2024 16:27:15] "GET /recommend-products/14 HTTP/1.1" 200 -
+2024-11-21 16:51:53,434 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.2.0.4:5000
+2024-11-21 16:51:53,434 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-21 16:51:53,434 - INFO -  * Restarting with stat
+2024-11-21 16:51:55,449 - WARNING -  * Debugger is active!
+2024-11-21 16:51:55,451 - INFO -  * Debugger PIN: 520-637-642
+2024-11-21 16:52:10,816 - INFO - 105.99.162.140 - - [21/Nov/2024 16:52:10] "GET /test HTTP/1.1" 200 -
+2024-11-21 16:52:12,658 - INFO - Received request to recommend products for user ID: 10.
+2024-11-21 16:52:13,939 - INFO - Recommendations for user 10 generated successfully.
+2024-11-21 16:52:13,940 - INFO - 105.99.162.140 - - [21/Nov/2024 16:52:13] "GET /recommend-products/10 HTTP/1.1" 200 -
+2024-11-21 18:59:22,203 - ERROR - 44.220.185.119 - - [21/Nov/2024 18:59:22] code 400, message Bad request version ("\x05?\x00V\x13\x02\x13\x03\x13\x01À,À0À+À/Ì©Ì¨\x00\x9f\x00\x9eÌªÀ¯À\xadÀ®À¬À$À(À#À'À")
+2024-11-21 18:59:22,204 - INFO - 44.220.185.119 - - [21/Nov/2024 18:59:22] "[31m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x10n\x0fÁß[¶N»\x12ð>0\x06|(Û<Ùo\x18J\x9d"î#Z\x98ºQ¤ì \x0e±\x80òüW\x84\x9dã\x0f\x15\x0bí¹\x00Trá©w\x85³2`GL?Ê \x1d\x05?\x00V\x13\x02\x13\x03\x13\x01À,À0À+À/Ì©Ì¨\x00\x9f\x00\x9eÌªÀ¯À­À®À¬À$À(À#À'À[0m" 400 -
+2024-11-21 18:59:22,381 - INFO - 44.220.185.119 - - [21/Nov/2024 18:59:22] "[33mGET / HTTP/1.1[0m" 404 -
+2024-11-21 20:13:09,671 - INFO - 111.113.88.156 - - [21/Nov/2024 20:13:09] "[33mGET / HTTP/1.1[0m" 404 -

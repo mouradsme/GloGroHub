@@ -4,10 +4,10 @@
 <div class="home-section">
     <div class="p-5">
         <div class="flex overflow-hidden bg-white border divide-x rounded-lg rtl:flex-row-reverse dark:bg-gray-900 dark:border-gray-700 dark:divide-gray-700">
-            <a href="{{ route('marketplace') }}" class="px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
+            <a href="{{ route('marketplace') }}" class="px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-orange-500 dark:text-gray-300 hover:bg-gray-100">
                 <i class='bx bx-home'></i> 
             </a>
-            <i class="px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">/ Products / {{ $product->name }}</i>
+            <i class="px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-orange-500 dark:text-gray-300 hover:bg-gray-100">/ Products / {{ $product->name }}</i>
         </div>
 
         <!-- Container for the product details -->
@@ -50,7 +50,7 @@
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="number" min="$product->min_order_quantity" name="quantity" value="{{ $product->min_order_quantity }}" class=""> <!-- Default quantity is 1, you can change this -->
                             
-                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                            <button type="submit" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
                                 Add to cart
                             </button>
                         </form>

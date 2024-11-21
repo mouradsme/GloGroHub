@@ -59,7 +59,7 @@ class AddCategory extends Command
             'description' => $description,
             'name' => $name,
             'parent_id' => $parent_id,
-            'slug' => Str::slug($request->name),
+            'slug' => Str::slug($name),
         ]);
 
         $this->info("Category '{$Category->name}' has been created successfully.");

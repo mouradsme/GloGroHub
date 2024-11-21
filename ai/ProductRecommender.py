@@ -41,7 +41,9 @@ class ProductRecommender:
             host=self.db_config['host'],
             user=self.db_config['user'],
             password=self.db_config['password'],
-            database=self.db_config['database']
+            database=self.db_config['database'],
+    	    ssl_disabled=self.db_config['ssl_disabled']
+
         )
         
         # SQL query to fetch the product data

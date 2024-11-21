@@ -44,17 +44,19 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/category/{id}', [Marketplace::class, 'getCategory'])->name('category');
 
-    Route::get('/add-category', [Dashboard::class, 'add_category'])->middleware(['verified'])->name('add_category');
+    Route::get('/categories/create', [Dashboard::class, 'add_category'])->middleware(['verified'])->name('add_category');
 
-    Route::post('/add-category', [CategoryController::class, 'store'])->middleware(['verified'])->name('category.post');
+    Route::post('/categories/create', [CategoryController::class, 'store'])->middleware(['verified'])->name('category.post');
     
     //Products
 
-    Route::get('/add-product', [Dashboard::class, 'add_product'])->middleware(['verified'])->name('add_product');
-
-    Route::post('/add-product', [ProductController::class, 'store'])->middleware(['verified'])->name('product.store');
-    
     Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
+    Route::get('/products', [ProductController::class, 'index'])->middleware(['verified'])->name('products.index');
+
+    Route::get('/products/create', [ProductController::class, 'create'])->middleware(['verified'])->name('products.create');
+
+    Route::post('/products/create', [ProductController::class, 'store'])->middleware(['verified'])->name('product.store');
 
     // Orders
 

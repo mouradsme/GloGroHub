@@ -4,16 +4,16 @@
     @extends('layouts.market')
 @section('content')
    <div class="home-section">
-    <div class="bg-blue-100 p-6 text-center rounded-lg shadow-md">
+    <div class="bg-orange-100 p-6 text-center rounded-lg shadow-md">
         <h1 class="text-4xl font-bold text-gray-800">GloGroHub Marketplace</h1>
         <p class="text-lg mt-2 text-gray-600">This is the Orders page where you can find all your orders.</p>
     </div>
          <div class="p-5">
             <div  class="flex overflow-hidden bg-white border divide-x rounded-lg rtl:flex-row-reverse dark:bg-gray-900 dark:border-gray-700 dark:divide-gray-700">
-               <a href="{{ route('marketplace') }}" class="px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
+               <a href="{{ route('marketplace') }}" class="px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-orange-500 dark:text-gray-300 hover:bg-gray-100">
                   <i class='bx bx-home'></i> {{ __('Home') }}
                </a>
-               <a  class="px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
+               <a  class="px-4 py-2 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-orange-500 dark:text-gray-300 hover:bg-gray-100">
                 <i class='bx bx-cart-alt'></i> {{ __('Orders') }}
              </a>
            </div>

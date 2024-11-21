@@ -38,7 +38,7 @@
             </select>
         </div>
 
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Add Holiday</button>
+        <button type="submit" class="bg-orange-600 text-white px-4 py-2 rounded">Add Holiday</button>
     </form>
 </div>
 @stop

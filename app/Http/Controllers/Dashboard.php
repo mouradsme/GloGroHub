@@ -76,13 +76,5 @@ class Dashboard extends Controller
 
     }
 
-    public function add_product() {
-        $user_role = auth()->user()->role;
-        $categories = Category::all();
-        if ($user_role == 'wholesaler') {
-            return view('wholesaler.add-product', compact('categories'));
-        }
-        return abort('403');
-
-    }
+    
 }

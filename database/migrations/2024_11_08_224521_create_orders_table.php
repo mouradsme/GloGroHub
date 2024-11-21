@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->onDelete('cascade'); // Link to the ordered product
             $table->integer('quantity')->default(1);
             $table->decimal('total_price', 10, 2); // Total price of the order
-            $table->enum('status', ['pending', 'completed', 'cancelled'])->default('pending');
+            $table->enum('status', ['pending', 'completed', 'cancelled', 'available', 'out_of_stock', 'discontinued', 'cart'])->default('cart');
             $table->timestamp('ordered_at')->useCurrent(); // When the order was placed
             $table->timestamps();
         });

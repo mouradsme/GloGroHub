@@ -4,7 +4,7 @@
 @extends('layouts.market')
 @section('content')
    <div class="home-section">
-      <div class="bg-blue-100 p-6 text-center">
+      <div class="bg-orange-100 p-6 text-center">
          <h1 class="text-3xl font-bold">AI recommended Products</h1>
          <p class="text-lg mt-2">Explore the best ethnic grocery products from trusted suppliers.</p>
  
